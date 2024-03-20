@@ -9,6 +9,8 @@ import java.util.List;
 @RequestMapping("/alumno")
 public interface AlumnoApiController {
 
+    //Controller con los mappings para hacer peticiones
+
     @PostMapping("/")
     ResponseEntity<Alumno> createAlumno(@RequestBody Alumno alumnoNuevo);
 

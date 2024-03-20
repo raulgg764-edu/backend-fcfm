@@ -16,6 +16,7 @@ public class AlumnoApiControllerImpl implements AlumnoApiController {
 
 
     private AlumnoService alumnoService;
+
     @Autowired
     AlumnoApiControllerImpl(AlumnoService alumnoService){
         this.alumnoService = alumnoService;
