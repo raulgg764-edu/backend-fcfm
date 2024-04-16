@@ -17,11 +17,19 @@ public class AlumnoServiceImpl implements AlumnoService{
 
     public void createAlumno(Alumno newAlumno){
         alumnoList.add(newAlumno);
-
     }
 
     @Override
     public Alumno getAlumnoById(int id) {
         return alumnoList.get(id);
+    }
+
+    public void updateAlumno(int id, Alumno updatedAlumno){
+        alumnoList.set(id, updatedAlumno);
+
+    }
+
+    public void deleteAlumno(int id){
+        alumnoList.remove(id);
     }
 }

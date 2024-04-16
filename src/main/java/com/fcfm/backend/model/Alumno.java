@@ -7,6 +7,8 @@ public class Alumno {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String fechaNac;
+    private String telefono;
+    private String email;
 
     //Getters Setters de Alumno
     public String getNombre() {
@@ -31,6 +33,9 @@ public class Alumno {
     public void setFechaNac(String fechaNac) {
         this.fechaNac = fechaNac;
     }
-
+    public String getTelefono() { return telefono;}
+    public void setTelefono(String telefono) { this.telefono = telefono;    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email;     }
 
 }
