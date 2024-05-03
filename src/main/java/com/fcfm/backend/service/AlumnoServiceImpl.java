@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class AlumnoServiceImpl implements AlumnoService{
-    List<Alumno> alumnoList = new ArrayList<>();
+
     private AlumnoRepository alumnoRepository;
 
     @Autowired
@@ -20,6 +20,10 @@ public class AlumnoServiceImpl implements AlumnoService{
     }
 
     public List<Alumno> getAlumnoList() {
+        List <Alumno> alumnoList = new ArrayList<>();
+        for(com.fcfm.backend.repository.entity.Alumno alumnoItem: alumnoRepository.getAlumnoList()){
+            alumnoList.add(AlumnoMapper.alumnoEntityToAlumnoModel(alumnoItem));
+        }
         return alumnoList;
     }
 
@@ -34,11 +38,13 @@ public class AlumnoServiceImpl implements AlumnoService{
     }
 
     public void updateAlumno(int id, Alumno updatedAlumno){
-        alumnoList.set(id, updatedAlumno);
+        if(getAlumnoById(id)!=null){
+            alumnoRepository.updateAlumno((long)id,AlumnoMapper.alumnoModelToAlumnoEntity(updatedAlumno));
+        }
 
     }
 
     public void deleteAlumno(int id){
-        alumnoList.remove(id);
+        if(getAlumnoById(id)!=null) alumnoRepository.deleteAlumno((long)id);
     }
 }
