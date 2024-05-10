@@ -14,6 +14,7 @@ public class AlumnoServiceImpl implements AlumnoService{
 
     private AlumnoRepository alumnoRepository;
 
+
     @Autowired
     AlumnoServiceImpl(AlumnoRepository alumnoRepository){
         this.alumnoRepository = alumnoRepository;
@@ -45,6 +46,11 @@ public class AlumnoServiceImpl implements AlumnoService{
     }
 
     public void deleteAlumno(int id){
-        if(getAlumnoById(id)!=null) alumnoRepository.deleteAlumno((long)id);
+        if(getAlumnoById(id)!=null){
+            alumnoRepository.deleteAlumno((long)id);
+        }else{
+            return;
+        }
+
     }
 }

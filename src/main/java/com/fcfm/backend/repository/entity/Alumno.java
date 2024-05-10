@@ -1,6 +1,11 @@
 package com.fcfm.backend.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+
 
 import java.sql.Date;
 
@@ -10,12 +15,16 @@ public class Alumno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "alumnoID",nullable = false)
     private long alumnoID;
+    @NotEmpty(message = "First name can not be empty")
     private String primerNombre;
     private String segundoNombre;
     private String apellidoPat;
     private String apellidoMat;
+
+
     private Date fechaNac;
     private String curp;
+
     private String email;
 
     public Alumno(long alumnoID, String primerNombre, String segundoNombre, String apellidoPat, String apellidoMat, Date fechaNac, String curp, String email) {

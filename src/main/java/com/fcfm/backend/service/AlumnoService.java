@@ -13,4 +13,5 @@ public interface AlumnoService {
     void updateAlumno(int id,Alumno updatedAlumno);
 
     void deleteAlumno(int id);
+
 }
