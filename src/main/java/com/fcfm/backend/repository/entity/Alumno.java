@@ -15,7 +15,7 @@ public class Alumno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "alumnoID",nullable = false)
     private long alumnoID;
-    @NotEmpty(message = "First name can not be empty")
+
     private String primerNombre;
     private String segundoNombre;
     private String apellidoPat;

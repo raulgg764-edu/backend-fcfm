@@ -63,6 +63,7 @@ public class AlumnoApiControllerImpl implements AlumnoApiController {
 
     @Override
     public ResponseEntity<Alumno> updateAlumno(int idAlumno, @Valid @RequestBody Alumno updatedAlumno, BindingResult result) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         try {
             boolean isAlumnoValid = alumnoValidatorService.isAlumnoValid(updatedAlumno);
 
