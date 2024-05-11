@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Pattern;
 
 import java.sql.Date;
 
+@Table(name = "alumno")
 @Entity
 public class Alumno {
     @Id

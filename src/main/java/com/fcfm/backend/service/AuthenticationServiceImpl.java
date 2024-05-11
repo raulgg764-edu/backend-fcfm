@@ -24,7 +24,9 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     }
 
     public com.fcfm.backend.repository.entity.User signup(User input) {
-        com.fcfm.backend.repository.entity.User newUser = UserMapper.userModelToUserEntity(input);
+        com.fcfm.backend.repository.entity.User newUser = new com.fcfm.backend.repository.entity.User();
+        newUser.setUsername(input.getUsername());
+        newUser.setPass(passwordEncoder.encode(input.getPass()));
 
         return userRepository.save(newUser);
     }

@@ -1,5 +1,5 @@
 server:
-  port: 8005
+  port: 8080
 spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=universidades;encrypt=false;instance=SQLEXPRESS01
