@@ -16,6 +16,7 @@ public class AlumnoApiControllerImpl implements AlumnoApiController {
 
 
     private AlumnoService alumnoService;
+
     @Autowired
     AlumnoApiControllerImpl(AlumnoService alumnoService){
         this.alumnoService = alumnoService;
@@ -37,5 +38,28 @@ public class AlumnoApiControllerImpl implements AlumnoApiController {
     @Override
     public ResponseEntity<Alumno> getAlumnoById(int idAlumno) {
         return ResponseEntity.ok().body(alumnoService.getAlumnoById(idAlumno));
+    }
+
+    @Override
+    public ResponseEntity<Alumno> updateAlumno(int idAlumno, @RequestBody Alumno updatedAlumno) {
+        try {
+            alumnoService.updateAlumno(idAlumno, updatedAlumno);
+            return ResponseEntity.ok(updatedAlumno);
+        }
+        catch (Exception e){
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<String> deleteAlumno(int idAlumno) {
+        try {
+            alumnoService.deleteAlumno(idAlumno);
+            return ResponseEntity.ok("Alumno eliminado");
+        }
+        catch (Exception e){
+
+            return ResponseEntity.notFound().build();
+        }
     }
 }
