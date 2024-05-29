@@ -9,13 +9,14 @@ import jakarta.validation.constraints.Pattern;
 
 import java.sql.Date;
 
+@Table(name = "alumno")
 @Entity
 public class Alumno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "alumnoID",nullable = false)
     private long alumnoID;
-    @NotEmpty(message = "First name can not be empty")
+
     private String primerNombre;
     private String segundoNombre;
     private String apellidoPat;
