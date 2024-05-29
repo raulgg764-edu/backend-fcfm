@@ -1,32 +1,54 @@
-package com.fcfm.backend.model;
+package com.fcfm.backend.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
-import org.springframework.format.annotation.DateTimeFormat;
 
+
+import java.sql.Date;
+
+@Entity
 public class Alumno {
-
-    //Atributos
-    @NotEmpty
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "alumnoID",nullable = false)
+    private long alumnoID;
+    @NotEmpty(message = "First name can not be empty")
     private String primerNombre;
     private String segundoNombre;
-    @NotEmpty
     private String apellidoPat;
     private String apellidoMat;
 
-    @NotEmpty
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE,pattern = "YYYY-MM-dd")
-    private String fechaNac;
+
+    private Date fechaNac;
     private String curp;
-    @Email(message = "Email address is not valid")
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$",message = "Email address is not valid")
+
     private String email;
 
-    //Getters Setters de Alumno
+    public Alumno(long alumnoID, String primerNombre, String segundoNombre, String apellidoPat, String apellidoMat, Date fechaNac, String curp, String email) {
+        this.alumnoID = alumnoID;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.apellidoPat = apellidoPat;
+        this.apellidoMat = apellidoMat;
+        this.fechaNac = fechaNac;
+        this.curp = curp;
+        this.email = email;
+    }
 
+    public Alumno(){
+
+    }
+
+    public long getAlumnoID() {
+        return alumnoID;
+    }
+
+    public void setAlumnoID(long alumnoID) {
+        this.alumnoID = alumnoID;
+    }
 
     public String getPrimerNombre() {
         return primerNombre;
@@ -60,11 +82,11 @@ public class Alumno {
         this.apellidoMat = apellidoMat;
     }
 
-    public String getFechaNac() {
+    public Date getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(String fechaNac) {
+    public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
     }
 
@@ -84,3 +106,4 @@ public class Alumno {
         this.email = email;
     }
 }
+
